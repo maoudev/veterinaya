@@ -11,6 +11,8 @@ import (
 func RunServer() {
 	server := gin.Default()
 
+	server.SetTrustedProxies([]string{config.HTTP_ORIGINS})
+
 	server.Use(cors.Middleware(cors.Config{
 		Origins:        config.HTTP_ORIGINS,
 		Methods:        "GET,PUT,POST,DELETE",
